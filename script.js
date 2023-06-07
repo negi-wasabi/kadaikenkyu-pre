@@ -1,25 +1,47 @@
-function getRandomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+var gameContainer = document.getElementById("game-container");
+var cat = document.getElementById("cat");
+var timerDisplay = document.getElementById("timer");
+
+var timerInterval;
+var time = 0;
+
+cat.addEventListener("click", catchCat);
+
+function startGame() {
+  resetGame();
+  startTimer();
+  moveCat();
 }
 
-function checkGuess() {
-  var userInput = document.getElementById("guessInput").value;
-  var guessedNumber = parseInt(userInput);
+function resetGame() {
+  clearInterval(timerInterval);
+  time = 0;
+  timerDisplay.textContent = "Time: 0s";
+  cat.style.top = "0";
+  cat.style.left = "0";
+  cat.style.display = "block";
+}
 
-  if (isNaN(guessedNumber)) {
-    document.getElementById("result").textContent = "Please enter a valid number.";
-    return;
-  }
+function startTimer() {
+  timerInterval = setInterval(function() {
+    time++;
+    timerDisplay.textContent = "Time: " + time + "s";
+  }, 1000);
+}
 
-  var randomNumber = getRandomNumber(1, 500);
-  document.getElementById("number").textContent = randomNumber;
+function moveCat() {
+  var containerWidth = gameContainer.offsetWidth - cat.offsetWidth;
+  var containerHeight = gameContainer.offsetHeight - cat.offsetHeight;
 
-  var isEven = randomNumber % 2 === 0;
-  var guessedEven = userInput.toLowerCase() === "even";
+  var randomX = Math.floor(Math.random() * containerWidth);
+  var randomY = Math.floor(Math.random() * containerHeight);
 
-  if ((isEven && guessedEven) || (!isEven && !guessedEven)) {
-    document.getElementById("result").textContent = "Correct!";
-  } else {
-    document.getElementById("result").textContent = "Incorrect!";
-  }
+  cat.style.top = randomY + "px";
+  cat.style.left = randomX + "px";
+}
+
+function catchCat() {
+  cat.style.display = "none";
+  clearInterval(timerInterval);
+  alert("Congratulations! You caught the cat in " + time + " seconds.");
 }

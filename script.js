@@ -36,10 +36,33 @@ function moveObject() {
   var randomX = Math.floor(Math.random() * containerWidth);
   var randomY = Math.floor(Math.random() * containerHeight);
 
-  obj.style.top = randomY + "px";
-  obj.style.left = randomX + "px";
+  var startX = parseInt(obj.style.left) || 0;
+  var startY = parseInt(obj.style.top) || 0;
+  var endX = randomX;
+  var endY = randomY;
+  var duration = 2000; // アニメーションの時間（ミリ秒）
+  var startTime = null;
 
-  setTimeout(moveObject, 2000);
+  function animate(timestamp) {
+    if (!startTime) startTime = timestamp;
+    var progress = timestamp - startTime;
+
+    var deltaX = endX - startX;
+    var deltaY = endY - startY;
+    var currentX = startX + (deltaX * progress) / duration;
+    var currentY = startY + (deltaY * progress) / duration;
+
+    obj.style.left = currentX + "px";
+    obj.style.top = currentY + "px";
+
+    if (progress < duration) {
+      requestAnimationFrame(animate);
+    } else {
+      moveObject(); // アニメーションが終了したら次の移動を開始
+    }
+  }
+
+  requestAnimationFrame(animate);
 }
 
 function catchObject() {

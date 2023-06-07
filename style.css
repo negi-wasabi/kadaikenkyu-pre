@@ -1,23 +1,25 @@
-body {
+#game-container {
+  width: 400px;
+  height: 400px;
+  background-color: #eee;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+#cat {
+  width: 50px;
+  height: 50px;
+  background-color: orange;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+button {
+  margin-top: 10px;
+}
+
+h1, p, button {
   text-align: center;
-  font-family: Arial, sans-serif;
-}
-
-h1 {
-  margin-top: 50px;
-}
-
-#number {
-  font-size: 48px;
-  margin-top: 30px;
-}
-
-#guess {
-  margin-top: 30px;
-}
-
-#result {
-  margin-top: 20px;
-  font-size: 24px;
-  font-weight: bold;
 }

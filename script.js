@@ -30,8 +30,8 @@ function startTimer() {
 }
 
 function moveObject() {
-  var containerWidth = gameContainer.clientWidth - obj.offsetWidth;
-  var containerHeight = gameContainer.clientHeight - obj.offsetHeight;
+  var containerWidth = gameContainer.offsetWidth - obj.offsetWidth;
+  var containerHeight = gameContainer.offsetHeight - obj.offsetHeight;
 
   var randomX = Math.floor(Math.random() * containerWidth);
   var randomY = Math.floor(Math.random() * containerHeight);
@@ -49,6 +49,7 @@ function catchObject() {
 
   scores.push(time);
   updateScoreboard();
+  resetGame();
 }
 
 function updateScoreboard() {

@@ -2,43 +2,17 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Even or Odd Game</title>
-  <style>
-    body {
-      text-align: center;
-      font-family: Arial, sans-serif;
-    }
-
-    h1 {
-      margin-top: 50px;
-    }
-
-    #number {
-      font-size: 48px;
-      margin-top: 30px;
-    }
-
-    #guess {
-      margin-top: 30px;
-    }
-
-    #result {
-      margin-top: 20px;
-      font-size: 24px;
-      font-weight: bold;
-    }
-  </style>
+  <title>Catch the Cat!</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-  <h1>Even or Odd Game</h1>
-  <div id="number"></div>
-  <div id="guess">
-    <label for="guessInput">Is the number even or odd?</label>
-    <input type="text" id="guessInput">
-    <button onclick="checkGuess()">Check</button>
+  <h1>Catch the Cat!</h1>
+  <p>Click on the cat to catch it!</p>
+  <div id="game-container">
+    <div id="cat"></div>
   </div>
-  <div id="result"></div>
-
+  <p id="timer">Time: 0s</p>
+  <button onclick="startGame()">Start Game</button>
   <script src="script.js"></script>
 </body>
 </html>

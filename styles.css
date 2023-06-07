@@ -15,22 +15,6 @@
   top: 0;
   left: 0;
   cursor: pointer;
-  animation: moveObject 2s infinite;
-}
-
-@keyframes moveObject {
-  0% {
-    top: 0;
-    left: 0;
-  }
-  50% {
-    top: 350px;
-    left: 350px;
-  }
-  100% {
-    top: 0;
-    left: 0;
-  }
 }
 
 button {

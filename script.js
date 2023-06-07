@@ -17,21 +17,19 @@ function resetGame() {
   clearInterval(timerInterval);
   time = 0;
   timerDisplay.textContent = "Time: 0s";
-  cat.style.top = "0";
-  cat.style.left = "0";
   cat.style.display = "block";
 }
 
 function startTimer() {
-  timerInterval = setInterval(function() {
+  timerInterval = setInterval(function () {
     time++;
     timerDisplay.textContent = "Time: " + time + "s";
   }, 1000);
 }
 
 function moveCat() {
-  var containerWidth = gameContainer.offsetWidth - cat.offsetWidth;
-  var containerHeight = gameContainer.offsetHeight - cat.offsetHeight;
+  var containerWidth = gameContainer.clientWidth - cat.offsetWidth;
+  var containerHeight = gameContainer.clientHeight - cat.offsetHeight;
 
   var randomX = Math.floor(Math.random() * containerWidth);
   var randomY = Math.floor(Math.random() * containerHeight);

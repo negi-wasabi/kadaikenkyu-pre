@@ -1,45 +1,47 @@
 var gameContainer = document.getElementById("game-container");
-var cat = document.getElementById("cat");
+var obj = document.getElementById("object");
 var timerDisplay = document.getElementById("timer");
 
 var timerInterval;
 var time = 0;
 
-cat.addEventListener("click", catchCat);
+obj.addEventListener("click", catchObject);
 
 function startGame() {
   resetGame();
   startTimer();
-  moveCat();
+  moveObject();
 }
 
 function resetGame() {
   clearInterval(timerInterval);
   time = 0;
   timerDisplay.textContent = "Time: 0s";
-  cat.style.display = "block";
+  obj.style.top = "0";
+  obj.style.left = "0";
+  obj.style.display = "block";
 }
 
 function startTimer() {
-  timerInterval = setInterval(function () {
+  timerInterval = setInterval(function() {
     time++;
     timerDisplay.textContent = "Time: " + time + "s";
   }, 1000);
 }
 
-function moveCat() {
-  var containerWidth = gameContainer.clientWidth - cat.offsetWidth;
-  var containerHeight = gameContainer.clientHeight - cat.offsetHeight;
+function moveObject() {
+  var containerWidth = gameContainer.offsetWidth - obj.offsetWidth;
+  var containerHeight = gameContainer.offsetHeight - obj.offsetHeight;
 
   var randomX = Math.floor(Math.random() * containerWidth);
   var randomY = Math.floor(Math.random() * containerHeight);
 
-  cat.style.top = randomY + "px";
-  cat.style.left = randomX + "px";
+  obj.style.top = randomY + "px";
+  obj.style.left = randomX + "px";
 }
 
-function catchCat() {
-  cat.style.display = "none";
+function catchObject() {
+  obj.style.display = "none";
   clearInterval(timerInterval);
-  alert("Congratulations! You caught the cat in " + time + " seconds.");
+  alert("Congratulations! You caught the object in " + time + " seconds.");
 }

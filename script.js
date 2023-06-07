@@ -1,9 +1,11 @@
 var gameContainer = document.getElementById("game-container");
 var obj = document.getElementById("object");
 var timerDisplay = document.getElementById("timer");
+var scoreboard = document.querySelector("#scoreboard tbody");
 
 var timerInterval;
 var time = 0;
+var scores = [];
 
 obj.addEventListener("click", catchObject);
 
@@ -17,8 +19,6 @@ function resetGame() {
   clearInterval(timerInterval);
   time = 0;
   timerDisplay.textContent = "Time: 0s";
-  obj.style.top = "0";
-  obj.style.left = "0";
   obj.style.display = "block";
 }
 
@@ -44,4 +44,18 @@ function catchObject() {
   obj.style.display = "none";
   clearInterval(timerInterval);
   alert("Congratulations! You caught the object in " + time + " seconds.");
+
+  scores.push(time);
+  updateScoreboard();
+}
+
+function updateScoreboard() {
+  scoreboard.innerHTML = "";
+  for (var i = 0; i < scores.length; i++) {
+    var scoreRow = document.createElement("tr");
+    var scoreData = document.createElement("td");
+    scoreData.textContent = scores[i] + "s";
+    scoreRow.appendChild(scoreData);
+    scoreboard.appendChild(scoreRow);
+  }
 }

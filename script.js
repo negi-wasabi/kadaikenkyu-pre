@@ -40,17 +40,18 @@ function moveObject() {
   var startY = parseInt(obj.style.top) || 0;
   var endX = randomX;
   var endY = randomY;
-  var duration = 2000; // アニメーションの時間（ミリ秒）
+  var duration = 1000; // アニメーションの時間（ミリ秒）
   var startTime = null;
 
   function animate(timestamp) {
     if (!startTime) startTime = timestamp;
     var progress = timestamp - startTime;
+    var easeProgress = easeInOutQuad(progress, 0, 1, duration);
 
     var deltaX = endX - startX;
     var deltaY = endY - startY;
-    var currentX = startX + (deltaX * progress) / duration;
-    var currentY = startY + (deltaY * progress) / duration;
+    var currentX = startX + deltaX * easeProgress;
+    var currentY = startY + deltaY * easeProgress;
 
     obj.style.left = currentX + "px";
     obj.style.top = currentY + "px";
@@ -63,6 +64,14 @@ function moveObject() {
   }
 
   requestAnimationFrame(animate);
+}
+
+// イージング関数（開始値、終了値、現在の進捗度合い、総時間）
+function easeInOutQuad(t, b, c, d) {
+  t /= d / 2;
+  if (t < 1) return (c / 2) * t * t + b;
+  t--;
+  return (-c / 2) * (t * (t - 2) - 1) + b;
 }
 
 function catchObject() {

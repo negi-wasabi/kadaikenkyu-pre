@@ -15,6 +15,22 @@
   top: 0;
   left: 0;
   cursor: pointer;
+  animation: moveObject 2s infinite;
+}
+
+@keyframes moveObject {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  50% {
+    top: 350px;
+    left: 350px;
+  }
+  100% {
+    top: 0;
+    left: 0;
+  }
 }
 
 button {
@@ -23,4 +39,20 @@ button {
 
 h1, p, button {
   text-align: center;
+}
+
+#scoreboard {
+  margin-top: 20px;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#scoreboard th {
+  background-color: #ddd;
+  padding: 5px;
+}
+
+#scoreboard td {
+  padding: 5px;
 }

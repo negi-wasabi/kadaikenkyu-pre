@@ -30,14 +30,16 @@ function startTimer() {
 }
 
 function moveObject() {
-  var containerWidth = gameContainer.offsetWidth - obj.offsetWidth;
-  var containerHeight = gameContainer.offsetHeight - obj.offsetHeight;
+  var containerWidth = gameContainer.clientWidth - obj.offsetWidth;
+  var containerHeight = gameContainer.clientHeight - obj.offsetHeight;
 
   var randomX = Math.floor(Math.random() * containerWidth);
   var randomY = Math.floor(Math.random() * containerHeight);
 
   obj.style.top = randomY + "px";
   obj.style.left = randomX + "px";
+
+  setTimeout(moveObject, 2000);
 }
 
 function catchObject() {

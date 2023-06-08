@@ -1,4 +1,5 @@
-var gameContainer = document.getElementById("game-container");
+
+  var gameContainer = document.getElementById("game-container");
 var obj = document.getElementById("object");
 var timerDisplay = document.getElementById("timer");
 var totalDisplay = document.getElementById("total-score");
@@ -41,6 +42,11 @@ function moveObject() {
 
   obj.style.left = randomX + "px";
   obj.style.top = randomY + "px";
+  obj.style.display = "block"; // オブジェクトを表示する
+
+  obj.addEventListener("transitionend", function() {
+    moveObject(); // アニメーションが終了したら次の移動を開始
+  });
 }
 
 function catchObject() {

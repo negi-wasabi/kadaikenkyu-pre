@@ -1,10 +1,12 @@
 var gameContainer = document.getElementById("game-container");
 var obj = document.getElementById("object");
 var timerDisplay = document.getElementById("timer");
+var totalDisplay = document.getElementById("total");
 var scoreboard = document.querySelector("#scoreboard tbody");
 
 var timerInterval;
 var time = 0;
+var totalCaught = 0;
 var scores = [];
 
 obj.addEventListener("click", catchObject);
@@ -78,6 +80,9 @@ function catchObject() {
   obj.style.display = "none";
   clearInterval(timerInterval);
   alert("Congratulations! You caught the object in " + time + " seconds.");
+  
+  totalCaught++;
+  totalDisplay.textContent = "Total Caught: " + totalCaught;
 
   scores.push(time);
   updateScoreboard();

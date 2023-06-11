@@ -6,7 +6,7 @@ var scoreboard = document.querySelector("#scoreboard tbody");
 
 var timerInterval;
 var time = 0;
-var totalCaught = 0;
+var totalCaught = 0;　
 var scores = [];
 
 obj.addEventListener("click", catchObject);

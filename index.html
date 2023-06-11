@@ -1,18 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Catch the Object!</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>Catch the Object Game</title>
+  <style>
+    #game-container {
+      position: relative;
+      width: 500px;
+      height: 500px;
+      border: 1px solid black;
+      overflow: hidden;
+    }
+    #object {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      cursor: pointer;
+    }
+    #scoreboard {
+      margin-top: 20px;
+      font-family: Arial, sans-serif;
+      border-collapse: collapse;
+    }
+    #scoreboard td {
+      padding: 5px;
+      border: 1px solid black;
+    }
+  </style>
 </head>
 <body>
-  <h1>Catch the Object!</h1>
-  <p>クリックで捕まえろ！！</p>
+  <h1>クリックでオブジェクトをやっけろ！</h1>
   <div id="game-container">
     <div id="object"></div>
   </div>
   <p id="timer">Time: 0s</p>
-  <button onclick="startGame()">Start Game</button>
+  <p id="total">Total Caught: 0</p>
+  <h2>Scoreboard</h2>
   <table id="scoreboard">
     <thead>
       <tr>
@@ -21,6 +44,10 @@
     </thead>
     <tbody></tbody>
   </table>
+
   <script src="script.js"></script>
+  <script>
+    startGame();
+  </script>
 </body>
 </html>
